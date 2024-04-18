@@ -1,0 +1,29 @@
+<div class="w-[500px]">
+    <div class="w-full">
+        <h2 mat-dialog-title>Crear nueva tarea</h2>
+        <mat-dialog-content class="flex flex-col">
+            <div>
+                <mat-form-field >
+                  <mat-label>Titulo</mat-label>
+                  <input matInput [(ngModel)]="data.title">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field >
+                  <mat-label>Subtitulo</mat-label>
+                  <input matInput [(ngModel)]="data.subtitle">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="w-full h-[150px]">
+                  <mat-label>Descripcion</mat-label>
+                  <input matInput [(ngModel)]="data.description">
+                </mat-form-field>
+            </div>
+        </mat-dialog-content>
+        <mat-dialog-actions >
+          <button mat-button (click)="onNoClick()">Cancelar</button>
+          <button mat-button (click)="onAddClick()" cdkFocusInitial>Agregar</button>
+        </mat-dialog-actions>
+    </div>
+</div>

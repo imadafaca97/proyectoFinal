@@ -1,0 +1,93 @@
+
+<div class="flex flex-row h-full justify-center gap-5 mt-2">
+
+  <div class="space-y-4 w-[600px]" >
+    <div class="category-header flex justify-between items-center">
+      <span class="font-bold text-2xl">Por hacer</span>
+      <div class="example-button-container">
+        <button mat-mini-fab color="primary" (click)="openDialog()" >
+          <mat-icon >plus_one</mat-icon>
+        </button>
+      </div>
+    </div>
+    @for (item of card; track $index) {      
+      <mat-card class="card w-[500px] " *ngIf="item.status === 'toDo'">
+          <mat-card-header>
+            <div>
+              <mat-card-title>{{item.title}}</mat-card-title>
+              <mat-card-subtitle>{{item.subtitle}}</mat-card-subtitle>
+            </div>
+            <div class="move-button">
+              <button  (click)="changeStatus($index, 'inProgress')" >
+                <mat-icon>keyboard_arrow_right</mat-icon>
+              </button>
+            </div>
+          </mat-card-header>
+          <mat-card-content class="w-full">
+            <p>
+              {{item.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-button (click)="deleteTask($index)">Eliminar</button>
+            <button mat-button (click)="openEditDialog($index)">Editar</button>
+          </mat-card-actions>
+      </mat-card>
+    }
+  </div>
+
+  <div class="w-0.5 h-full bg-slate-200"></div> 
+
+  <div class="space-y-4 w-[500px]">
+    <div class="category-header flex justify-between items-center">
+      <span class="font-bold text-2xl">En progreso</span>
+    </div>
+    @for (item of card; track $index) {      
+      <mat-card class="card w-[500px] " *ngIf="item.status === 'inProgress'">
+        <mat-card-header>
+          <div>
+            <mat-card-title>{{item.title}}</mat-card-title>
+            <mat-card-subtitle>{{item.subtitle}}</mat-card-subtitle>
+          </div>
+          <div class="move-button">
+            <button  (click)="changeStatus($index, 'done')" >
+              <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+          </div>
+        </mat-card-header>
+          <mat-card-content class="w-full">
+            <p>
+              {{item.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-button (click)="deleteTask($index)">Eliminar</button>
+          </mat-card-actions>
+      </mat-card>
+    }
+  </div>
+
+  <div class="w-0.5 h-full bg-slate-200 "></div>
+
+  <div class="space-y-4 w-[600px]">
+    <div class="category-header flex justify-between items-center mb-3">
+      <span class="font-bold text-2xl">Terminadas</span>
+    </div>
+    @for (item of card; track $index) {      
+      <mat-card class="card w-[500px] " *ngIf="item.status === 'done'">
+          <mat-card-header>
+            <mat-card-title>{{item.title}}</mat-card-title>
+            <mat-card-subtitle>{{item.subtitle}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="w-full">
+            <p>
+              {{item.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-button (click)="deleteTask($index)">Eliminar</button>
+          </mat-card-actions>
+      </mat-card>
+    }
+  </div>
+</div>
